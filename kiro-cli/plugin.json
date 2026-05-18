@@ -1,0 +1,84 @@
+{
+    "kind": "node",
+    "source": "local",
+    "spec": {
+        "runner": {
+            "command": "./kiro-cli"
+        },
+        "node": {
+            "description": "Kiro CLI plugin node",
+            "type": "kiro-cli",
+            "label": "Kiro CLI",
+            "default_action": "headless",
+            "tags": [
+                "CLI"
+            ],
+            "actions": [
+                {
+                    "key": "headless",
+                    "description": "Headless action for Kiro CLI",
+                    "fields": [
+                        {
+                            "type": "string",
+                            "label": "Command / Path",
+                            "default": "kiro-cli",
+                            "key": "kiro_path",
+                            "required": true
+                        },
+                        {
+                            "required": true,
+                            "type": "string",
+                            "label": "Prompt",
+                            "key": "prompt"
+                        }
+                    ],
+                    "auto_layout": [
+                        [
+                            {
+                                "component": "input",
+                                "flex": 24,
+                                "key": "kiro_path",
+                                "options": {
+                                    "native_file_picker": true
+                                }
+                            }
+                        ],
+                        [
+                            {
+                                "component": "textarea",
+                                "flex": 24,
+                                "key": "prompt"
+                            }
+                        ]
+                    ],
+                    "label": "Headless",
+                    "has_response": true,
+                    "response_type": {
+                        "mime": "text/markdown"
+                    }
+                }
+            ],
+            "global_fields": [
+                {
+                    "type": "number",
+                    "label": "Timeout in seconds",
+                    "default": 60,
+                    "key": "timeout"
+                }
+            ],
+            "outputs": [
+                {
+                    "label": "Success",
+                    "tone": "success",
+                    "key": "success"
+                },
+                {
+                    "label": "Error",
+                    "tone": "error",
+                    "key": "error"
+                }
+            ],
+            "icon": "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/kiro/default.svg"
+        }
+    }
+}
