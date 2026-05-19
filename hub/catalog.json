@@ -1,0 +1,67 @@
+{
+    "schema_version": "1.0",
+    "message": "Happy new year",
+    "plugins": [
+        {
+            "id": "kiro-cli",
+            "name": "kiro-cli",
+            "kind": "node",
+            "version": "0.0.1",
+            "description": "The Kiro CLI brings the power of AI-assisted development to your terminal. Build, test, and deploy applications using natural language commands and automated workflows.",
+            "kind_meta": {
+                "icon": "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/kiro/default.svg",
+                "tags": [
+                    "llm",
+                    "cli"
+                ],
+                "actions": [
+                    {
+                        "key": "headless",
+                        "description": "Running headless commands"
+                    },
+                    {
+                        "key": "tui",
+                        "description": "soon"
+                    }
+                ]
+            },
+            "repo": {
+                "url": "https://github.com/hengkysteen/ekken-plugins/tree/main/kiro-cli",
+                "about": "https://github.com/hengkysteen/ekken-plugins/blob/main/kiro-cli/README.md",
+                "author": "hengkysteen"
+            },
+            "artifacts": [
+                {
+                    "os": "darwin",
+                    "arch": "arm64",
+                    "download_url": "https://github.com/hengkysteen/ekken-plugins/raw/refs/heads/main/kiro-cli/app.zip",
+                    "checksum": "sha256:2ec26833fce971547a01c0a6e14df53e70d9ee8dd285ed96bf98e26aef633685"
+                }
+            ]
+        },
+        {
+            "id": "mistral-ai",
+            "name": "Mistral",
+            "kind": "assistant",
+            "version": "0.0.1",
+            "description": "",
+            "kind_meta": {
+                "icon": "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mistral/default.svg"
+                 
+            },
+            "repo": {
+                "url": "https://github.com/hengkysteen/ekken-plugins/tree/main/mistral",
+                "about": "https://github.com/hengkysteen/ekken-plugins/blob/main/mistral/README.md",
+                "author": "hengkysteen"
+            },
+            "artifacts": [
+                {
+                    "os": "darwin",
+                    "arch": "arm64",
+                    "download_url": "https://github.com/hengkysteen/ekken-plugins/raw/refs/heads/main/mistral/app.zip",
+                    "checksum": "sha256:ba671776166f1d56dbb7debfc9596bfc903e1830b49509ed780f76cc5ddf7ecb"
+                }
+            ]
+        }
+    ]
+}
