@@ -1,0 +1,30 @@
+{
+  "source": "hub",
+  "kind": "assistant",
+  "spec": {
+    "runner": {
+      "command": "./app"
+    },
+    "provider": {
+      "id": "mistral-ai",
+      "name": "Mistral",
+      "logo": "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mistral/default.svg",
+      "official_url": "https://mistral.ai",
+      "config_fields": [
+        "API_KEY"
+      ],
+      "models": [
+        {
+          "name": "Mistral Medium 3.5",
+          "origin": "mistral-medium-3-5",
+          "context_window": 256000
+        },
+        {
+          "name": "Mistral Large 3",
+          "origin": "mistral-large-latest",
+          "context_window": 256000
+        }
+      ]
+    }
+  }
+}
