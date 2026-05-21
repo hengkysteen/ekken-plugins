@@ -8,7 +8,7 @@
     "provider": {
       "id": "mistral-ai",
       "name": "Mistral",
-      "logo": "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mistral/default.svg",
+      "icon": "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mistral/default.svg",
       "official_url": "https://mistral.ai",
       "config_fields": [
         "API_KEY"
