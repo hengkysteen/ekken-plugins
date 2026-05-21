@@ -16,7 +16,7 @@
             ],
             "actions": [
                 {
-                    "key": "headless",
+                    "type": "headless",
                     "description": "Headless action for Kiro CLI",
                     "fields": [
                         {

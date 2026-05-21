@@ -16,11 +16,11 @@
                 ],
                 "actions": [
                     {
-                        "key": "headless",
+                        "type": "headless",
                         "description": "Running headless commands"
                     },
                     {
-                        "key": "tui",
+                        "type": "tui",
                         "description": "soon"
                     }
                 ]
@@ -35,7 +35,7 @@
                     "os": "darwin",
                     "arch": "arm64",
                     "download_url": "https://github.com/hengkysteen/ekken-plugins/raw/refs/heads/main/kiro-cli/app.zip",
-                    "checksum": "sha256:2ec26833fce971547a01c0a6e14df53e70d9ee8dd285ed96bf98e26aef633685"
+                    "checksum": "sha256:790fc1010f0b494dd4df1b62f8b98c888e3f68143c289ab8408e92cf1bd28d40"
                 }
             ]
         },

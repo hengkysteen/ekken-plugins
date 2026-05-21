@@ -37,19 +37,16 @@ type Response struct {
 }
 
 func findKiroPath(userPath string) string {
-	// Jika user memberikan path absolut, gunakan langsung
 	if filepath.IsAbs(userPath) {
 		return userPath
 	}
 
-	// Coba cari di environment PATH sistem
 	if path, err := exec.LookPath(userPath); err == nil {
 		return path
 	}
 
 	var commonPaths []string
 
-	// Atur fallback spesifik berdasarkan OS
 	if runtime.GOOS == "windows" {
 		exeName := "kiro-cli.exe"
 		commonPaths = []string{
@@ -57,7 +54,7 @@ func findKiroPath(userPath string) string {
 			os.ExpandEnv("$USERPROFILE\\.cargo\\bin\\" + exeName),
 			os.ExpandEnv("$USERPROFILE\\go\\bin\\" + exeName),
 		}
-	} else { // macOS dan Linux
+	} else {
 		commonPaths = []string{
 			"/opt/homebrew/bin/kiro-cli",
 			"/usr/local/bin/kiro-cli",
@@ -73,7 +70,6 @@ func findKiroPath(userPath string) string {
 		}
 	}
 
-	// Jika tidak ditemukan, kembalikan path aslinya
 	return userPath
 }
 
@@ -86,7 +82,6 @@ func main() {
 
 	cfg := req.Config
 
-	// Ekstrak input berdasarkan plugin.json
 	rawPath := getStr(cfg, "kiro_path", "kiro-cli")
 	kiroPath := findKiroPath(rawPath)
 	prompt := getStr(cfg, "prompt", "")
@@ -100,21 +95,17 @@ func main() {
 		return
 	}
 
-	// Buat context dengan timeout
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeoutSeconds)*time.Second)
 	defer cancel()
 
-	// Tangkap sinyal interrupt dari OS (jika di-stop paksa oleh ekken)
 	sigCh := make(chan os.Signal, 1)
 	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)
 	go func() {
 		<-sigCh
-		cancel() // Membatalkan context, otomatis menghentikan exec.CommandContext
+		cancel()
 	}()
 
-	// Eksekusi perintah kiro-cli chat --no-interactive "<prompt>" dengan context
 	cmd := exec.CommandContext(ctx, kiroPath, "chat", "--no-interactive", prompt)
-	// Beritahu CLI untuk mematikan warna (konvensi standar universal)
 	cmd.Env = append(os.Environ(), "NO_COLOR=1", "TERM=dumb")
 
 	var stdout, stderr bytes.Buffer
@@ -123,18 +114,15 @@ func main() {
 
 	err := cmd.Run()
 
-	// Sebagai perlindungan ekstra, kita gunakan regex untuk membersihkan karakter ANSI
 	ansiRegex := regexp.MustCompile(`\x1b\[[0-9;]*[a-zA-Z]`)
 	outputStr := ansiRegex.ReplaceAllString(stdout.String(), "")
 
-	// Filter tanda "> " di awal kalimat (karakter khas dari kiro-cli)
 	outputStr = strings.TrimSpace(outputStr)
 	if after, ok := strings.CutPrefix(outputStr, "> "); ok {
 		outputStr = after
 	}
 
 	if err != nil {
-		// Periksa apakah error disebabkan oleh context yang dibatalkan (timeout/di-stop)
 		if ctx.Err() == context.DeadlineExceeded {
 			writeResponse(Response{Handle: "error", Response: outputStr, Error: "timeout"})
 			return
