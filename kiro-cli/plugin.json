@@ -3,9 +3,13 @@
     "source": "hub",
     "spec": {
         "runner": {
-            "command": "./kiro-cli"
+            "command": "./app"
         },
         "node": {
+            "version": "0.0.1",
+            "platforms": [
+                "darwin"
+            ],
             "icon": "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/kiro/default.svg",
             "description": "Kiro CLI plugin node",
             "type": "kiro-cli",
@@ -67,17 +71,9 @@
                     "key": "timeout"
                 }
             ],
-            "outputs": [
-                {
-                    "label": "Success",
-                    "tone": "success",
-                    "key": "success"
-                },
-                {
-                    "label": "Error",
-                    "tone": "error",
-                    "key": "error"
-                }
+            "output_handles": [
+                "success",
+                "error"
             ]
         }
     }

@@ -35,7 +35,7 @@
                     "os": "darwin",
                     "arch": "arm64",
                     "download_url": "https://github.com/hengkysteen/ekken-plugins/raw/refs/heads/main/kiro-cli/app.zip",
-                    "checksum": "sha256:790fc1010f0b494dd4df1b62f8b98c888e3f68143c289ab8408e92cf1bd28d40"
+                    "checksum": "sha256:a9f5031267ea1cae1a811fdaee22a377f35749e13a2c0407799f207047aa0f2a"
                 }
             ]
         },
